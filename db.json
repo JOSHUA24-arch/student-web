@@ -1,0 +1,103 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "id": 2,
+      "name": "dar es salam",
+      "email": "",
+      "mobile": "",
+      "city": ""
+    },
+    {
+      "id": 3,
+      "name": "dar es salam",
+      "email": "",
+      "mobile": "",
+      "city": ""
+    },
+    {
+      "id": 4,
+      "name": "dar",
+      "email": "",
+      "mobile": "",
+      "city": ""
+    },
+    {
+      "id": 5,
+      "name": "arusha",
+      "email": "",
+      "mobile": "",
+      "city": ""
+    },
+    {
+      "id": 6,
+      "name": "",
+      "email": "",
+      "mobile": "",
+      "city": ""
+    },
+    {
+      "id": 7,
+      "name": "kiliman",
+      "email": "",
+      "mobile": "",
+      "city": ""
+    },
+    {
+      "id": 8,
+      "name": "",
+      "email": "",
+      "mobile": "",
+      "city": ""
+    },
+    {
+      "id": 9,
+      "name": "dar",
+      "email": "",
+      "mobile": "",
+      "city": ""
+    },
+    {
+      "id": 10,
+      "name": "joshua",
+      "email": "joshua@gmail.com",
+      "mobile": 111111234,
+      "city": "marekani"
+    },
+    {
+      "id": 11,
+      "name": "leo",
+      "email": "leo@cardief.com",
+      "mobile": 6362686,
+      "city": "morogoro"
+    },
+    {
+      "id": 12,
+      "name": "costa",
+      "email": "costa@gmail.com",
+      "mobile": 133556,
+      "city": "kiliman"
+    },
+    {
+      "id": 13,
+      "name": "julius",
+      "email": "julius@gmail.com",
+      "mobile": 1324364,
+      "city": "dar es salam"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
