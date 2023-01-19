@@ -36,6 +36,7 @@ export class StudentComponent implements OnInit {
     this.showadd=false;
     this.showupdate=true;
   }
+  
 
   addstudent(){
     this.studentmodelobj.name = this.formValue.value.name;
