@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { ApiService } from '../shared/api.service';
  import { studentdata } from './student.model';
+ import { Router } from '@angular/router'; 
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
@@ -14,7 +15,13 @@ export class StudentComponent implements OnInit {
   studentmodelobj:studentdata=new studentdata
   formValue!:FormGroup
   allstudentdata:any;
-  constructor(private formBuilder:FormBuilder,private api:ApiService) { }
+  constructor(private formBuilder:FormBuilder,private api:ApiService, private router:Router) { }
+
+  
+  goToPage(pageName:string):void{
+    this.router.navigate([`${pageName}`]);
+  }
+  
 
   ngOnInit(): void {
     this.formValue=this.formBuilder.group({
