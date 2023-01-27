@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const express = require("express");
+const { stringify } = require("querystring");
 const schema = mongoose.Schema;
 
 const student = new schema({
@@ -13,17 +14,25 @@ const student = new schema({
     required: true,
   },
 
+  parentFName: {
+    type: String,
+    required: true,
+  },
+  parentLName: {
+    type: String,
+    required: true,
+  },
+  parentContacts: {
+    type: String,
+    required: true,
+  },
+
   email: {
     type: String,
     required: true,
   },
 
-  mobile: {
-    type: Number,
-    required: true,
-  },
-
-  city: {
+  homeAddress: {
     type: String,
     required: true,
   },
@@ -32,6 +41,10 @@ const student = new schema({
     type: String,
     required: true,
     default: "student2022",
+  },
+  studentStatus: {
+    type: String,
+    default: "registered",
   },
 });
 

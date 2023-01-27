@@ -1,7 +1,8 @@
-const student = require("../MODELS/studentDetailsModel");
+const Student = require("../MODELS/studentDetailsModel");
 const express = require("express");
 const mongoose = require("mongoose");
 const bicrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 exports.studentLogin = async (req, res, next) => {
   let email = req.body.email;
@@ -9,7 +10,7 @@ exports.studentLogin = async (req, res, next) => {
   let student;
 
   try {
-    student = await student.findOne({ email: email });
+    student = await Student.findOne({ email: email });
     if (!student) {
       let error = new Error("no student found");
       error.statusCode = 404;
@@ -36,6 +37,7 @@ exports.studentLogin = async (req, res, next) => {
       token: token,
     });
   } catch (error) {
+    console.log(error);
     throw new error("failed to login");
   }
 };
