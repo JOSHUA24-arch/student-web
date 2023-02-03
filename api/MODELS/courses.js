@@ -2,14 +2,14 @@ const mongoose = require("mongoose");
 const express = require("express");
 const { ObjectId } = require("mongodb");
 
-const schema = mongoose.Schema();
+const schema = mongoose.Schema;
 
 const course = new schema({
   courseName: {
     type: String,
     required: true,
   },
-  courseId: {
+  courseCode: {
     type: String,
     required: true,
   },
@@ -21,4 +21,14 @@ const course = new schema({
       required: false,
     },
   ],
+
+  enrolledStudent: [
+    {
+      type: schema.Types.ObjectId,
+      ref: "",
+      required: false,
+    },
+  ],
 });
+
+module.exports = mongoose.model("course", course);

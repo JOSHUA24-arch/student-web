@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const express = require("express");
-const schema = mongoose.Schema();
+const schema = mongoose.Schema;
 const { ObjectId } = require("mongodb");
 
 const lecture = new schema({

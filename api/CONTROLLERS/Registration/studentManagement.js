@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const Student = require("../MODELS/studentDetailsModel");
+const Student = require("../../MODELS/studentDetailsModel");
 
 const bicrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -45,14 +45,14 @@ exports.createStudent = async (req, res, next) => {
 };
 
 exports.updateStudent = async (req, res, next) => {
-  const studentID = req.params.studentID;
+  const studentId = req.params.userId;
   const updatedName = req.body.name;
   const updatedEmail = req.body.email;
   const updatedCity = req.body.city;
   const updatedPhone = req.body.mobile;
   let foundStudent;
   try {
-    foundStudent = await Student.findOne({ _id: studentID });
+    foundStudent = await Student.findOne({ _id: studentId });
     foundStudent.name = updatedName;
     foundStudent.email = updatedEmail;
     foundStudent.city = updatedCity;
@@ -80,7 +80,9 @@ exports.getAllStudents = async (req, res, next) => {
 };
 
 exports.deleteStudent = async (req, res, next) => {
-  let studentId = "63d381bf333322f89dc68dbf";
+  let studentId = req.params.studentId;
+  let userId = req.userId;
+
   try {
     await Student.deleteOne({ _id: studentId });
     res.status(200).json({
