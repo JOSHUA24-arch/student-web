@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const Student = require("../../MODELS/studentDetailsModel");
-
+const Student = require("../../MODELS/StudentBased/studentDetailsModel");
+const Course = require("../../MODELS/CourseBased/courses");
 const bicrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
@@ -89,6 +89,32 @@ exports.deleteStudent = async (req, res, next) => {
       message: "deleted succesfully",
     });
   } catch (error) {
-    throw new error("couldnt delete the member");
+    throw new error("couldnt delete the student");
+  }
+};
+
+exports.enrollToCourse = async (req, res, next) => {
+  let student_Id = req.userId;
+  let course_Id = req.params.courseId;
+  try {
+    let student = await Student.findOne({ _id: student_Id });
+    student.enrolledCourses.push(
+      await Course.mapReduce((course) => {
+        if (course._id == course_Id) {
+          //push the studet to the course
+          course.enrolledStudent.push(student);
+          return course;
+        } else {
+          return [];
+        }
+      })
+    );
+
+    res.status(200).json({
+      message: "enrolled successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    throw new Error("failed to enrroll you");
   }
 };

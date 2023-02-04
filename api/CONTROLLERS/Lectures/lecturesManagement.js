@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const Lecture = require("../../MODELS/lecturesModel");
+const Lecture = require("../../MODELS/LectureBased/lecturesModel");
 
 const bicrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");

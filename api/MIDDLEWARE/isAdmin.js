@@ -21,6 +21,10 @@ module.exports = async (req, res, next) => {
   }
 
   req.userId = decodeToken.userId;
+  let status = decodeToken.status;
+  if (status !== "adm") {
+    throw new Error("no permission to execute this");
+  }
 
   next();
 };

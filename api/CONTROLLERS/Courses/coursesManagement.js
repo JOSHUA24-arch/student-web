@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const course = require("../../MODELS/courses");
+const course = require("../../MODELS/CourseBased/courses");
 
 exports.registerCourse = async (req, res, next) => {
   const course_name = req.body.courseName;

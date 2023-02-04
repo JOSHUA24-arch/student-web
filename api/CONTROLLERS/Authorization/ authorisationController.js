@@ -1,9 +1,9 @@
-const Student = require("../../MODELS/studentDetailsModel");
+const Student = require("../../MODELS/LectureBased/studentDetailsModel");
 const express = require("express");
 const mongoose = require("mongoose");
 const bicrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const Lecture = require("../../MODELS/lecturesModel");
+const Lecture = require("../../MODELS/LectureBased/lecturesModel");
 
 exports.studentLogin = async (req, res, next) => {
   let email = req.body.email;
@@ -72,11 +72,45 @@ exports.lectureLogin = async (req, res, next) => {
       { expiresIn: "1h" }
     );
 
-    res.status(200).json({
+    await res.status(200).json({
       token: token,
     });
   } catch (error) {
     console.log(error);
     throw new error("failed to login");
+  }
+};
+
+exports.adminLevelLogin = async (req, res, next) => {
+  const user_name = req.body.userName;
+  const password = req.body.password;
+
+  try {
+    let user = await User.findOne({ username: user_name });
+    if (!user) {
+      throw new Error("no such user");
+    }
+
+    let status = bicrypt.compare(password, user.password);
+
+    if (!status) {
+      throw new Error("inncorrect password");
+    }
+
+    const token = jwt.sign(
+      {
+        username: user.userName,
+        userId: user._id,
+        status: user.status,
+      },
+      "",
+      { expiresIn: "24h" }
+    );
+
+    await res.status(200).json({ token: token });
+  } catch (error) {
+    console.log(error);
+
+    throw new Error("failed to login as admin");
   }
 };

@@ -23,7 +23,7 @@ const student = new schema({
     required: true,
   },
   parentContacts: {
-    type: String,
+    type: schema.Types.Number,
     required: true,
   },
 
@@ -46,6 +46,14 @@ const student = new schema({
     type: String,
     default: "registered",
   },
+
+  enrolledCourses: [
+    {
+      type: schema.Types.ObjectId,
+      ref: "",
+      required: false,
+    },
+  ],
 });
 
 module.exports = mongoose.model("student", student);
