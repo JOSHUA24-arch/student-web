@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const Lecture = require("../../MODELS/LectureBased/lecturesModel");
+const Course = require("../../MODELS/CourseBased/courses");
 
 const bicrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -35,5 +36,25 @@ exports.createLecture = async (req, res, next) => {
     });
   } catch (error) {
     throw new Error("lecture wasn't saved");
+  }
+};
+
+exports.asignedCourse = async (req, res, next) => {
+  let lect_Id = req.params.lectureId;
+  let course_Id = req.params.courseId;
+
+  try {
+    let lecturefound = await Lecture.findById(lect_Id);
+    let coursefound = await Course.findById(course_Id);
+
+    coursefound.tutors.push(lecturefound);
+    lecturefound.courses.push(coursefound);
+
+    res.status(200).json({
+      message: "lecture assigned successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    throw new Error("failed to assign the course");
   }
 };

@@ -19,6 +19,13 @@ studentRoutes.post(
   studentController.createStudent
 );
 
+studentRoutes.get("/viewAllCorses", isAuth, studentController.viewAllCourse);
+studentRoutes.get(
+  "/openCourse/:courseId",
+  isAuth,
+  studentController.openCourse
+);
+
 studentRoutes.post(
   "enrollCourse/:courseId",
   isAuth,
