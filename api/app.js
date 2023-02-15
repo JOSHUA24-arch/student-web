@@ -7,15 +7,15 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 // setting the routes to the app
-const authRouter = require("./ROUTERS/autheticaticationRouter");
-const studentRouter = require("./ROUTERS/studentRouters");
+const authRouter = require("./ROUTERS/Admin/adminRoutes");
+const studentRouter = require("./ROUTERS/student/studentRouters");
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 // body prser for
 app.use(bodyParser.json());
 
-app.use(authRouter);
-app.use(studentRouter);
+app.use("/admin", authRouter);
+app.use("/student", studentRouter);
 
 // Incase of the "" errors
 app.use((req, res, next) => {

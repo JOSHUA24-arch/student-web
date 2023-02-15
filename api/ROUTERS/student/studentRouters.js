@@ -1,10 +1,9 @@
 const express = require("express");
 const mongoose = require("express");
-const authLogic = require("../CONTROLLERS/Authorization/authLogic");
+const authLogic = require("../../CONTROLLERS/Authorization/ authorisationController");
 const { check, body } = require("express-validator/check");
 const studentController = require("../../CONTROLLERS/Registration/studentManagement");
-import isAuth from "../../MIDDLEWARE/isAuth";
-const authLogic = require("../../CONTROLLERS/Authorization");
+const isAuth = require("../../MIDDLEWARE/isAuth");
 
 const studentRoutes = express.Router();
 
@@ -19,12 +18,12 @@ studentRoutes.post(
   studentController.createStudent
 );
 
-studentRoutes.get("/viewAllCorses", isAuth, studentController.viewAllCourse);
-studentRoutes.get(
-  "/openCourse/:courseId",
-  isAuth,
-  studentController.openCourse
-);
+// studentRoutes.get("/viewAllCorses", isAuth, studentController.viewAllCourse);
+// studentRoutes.get(
+//   "/openCourse/:courseId",
+//   isAuth,
+//   studentController.openCourse
+// );
 
 studentRoutes.post(
   "enrollCourse/:courseId",

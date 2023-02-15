@@ -1,4 +1,4 @@
-const Student = require("../../MODELS/LectureBased/studentDetailsModel");
+const Student = require("../../MODELS/StudentBased/studentDetailsModel");
 const express = require("express");
 const mongoose = require("mongoose");
 const bicrypt = require("bcryptjs");

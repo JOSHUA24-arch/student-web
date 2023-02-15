@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("express");
 const { check, body } = require("express-validator/check");
 const isAdmin = require("../../MIDDLEWARE/isAdmin");
-const authLogic = require("../../CONTROLLERS/Authorization");
+const authLogic = require("../../CONTROLLERS/Authorization/ authorisationController");
 const studentController = require("../../CONTROLLERS/Registration/studentManagement");
 const lectureController = require("../../CONTROLLERS/Lectures/lecturesManagement");
 
